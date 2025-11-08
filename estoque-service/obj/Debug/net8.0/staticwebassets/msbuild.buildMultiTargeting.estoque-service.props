@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\estoque-service.props" />
+</Project>

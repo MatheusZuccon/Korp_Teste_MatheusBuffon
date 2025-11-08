@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zciEOORgdAUkWK6QJG+GfIXdhxFtuU8r9DPCQWczrjE=",
+  "Source": "faturamento-service",
+  "BasePath": "_content/faturamento-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
