@@ -1,0 +1,68 @@
+<div class="detalhe-nota-container">
+  <h2><mat-icon>description</mat-icon> Detalhes da Nota {{ nota?.numero }}</h2>
+
+  <div *ngIf="nota; else carregando">
+    <p>Status: <strong>{{ nota.status }}</strong></p>
+
+    <section class="section-form">
+      <h3>Adicionar Produto</h3>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Código do Produto</mat-label>
+          <input
+            matInput
+            [(ngModel)]="novoItem.codigoProduto"
+            placeholder="Ex: P001"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Quantidade</mat-label>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="novoItem.quantidade"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="adicionarItem()">
+          <mat-icon>add</mat-icon>
+          Adicionar
+        </button>
+      </div>
+    </section>
+
+    <section class="section-table">
+      <h3>Itens da Nota</h3>
+      <table mat-table [dataSource]="nota.itens" class="mat-elevation-z2">
+        <ng-container matColumnDef="codigoProduto">
+          <th mat-header-cell *matHeaderCellDef>Produto</th>
+          <td mat-cell *matCellDef="let item">{{ item.codigoProduto }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantidade">
+          <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+          <td mat-cell *matCellDef="let item">{{ item.quantidade }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </section>
+
+    <div class="actions">
+      <button mat-stroked-button color="accent" (click)="voltar()">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </button>
+    </div>
+  </div>
+
+  <ng-template #carregando>
+    <div class="loading">
+      <mat-spinner diameter="32"></mat-spinner>
+      <p>Carregando nota...</p>
+    </div>
+  </ng-template>
+</div>

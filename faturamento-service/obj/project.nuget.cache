@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WQS0TBZETBM=",
+  "dgSpecHash": "rvX1GkWFP20=",
   "success": true,
-  "projectFilePath": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\faturamento-service\\faturamento-service.csproj",
+  "projectFilePath": "C:\\dev\\Korp_Teste_MatheusBuffon\\faturamento-service\\faturamento-service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mathe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.21\\microsoft.aspnetcore.openapi.8.0.21.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj": {}
+    "C:\\dev\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj": {}
   },
   "projects": {
-    "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj": {
+    "C:\\dev\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj",
+        "projectUniqueName": "C:\\dev\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj",
         "projectName": "estoque-service",
-        "projectPath": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj",
+        "projectPath": "C:\\dev\\Korp_Teste_MatheusBuffon\\estoque-service\\estoque-service.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\estoque-service\\obj\\",
+        "outputPath": "C:\\dev\\Korp_Teste_MatheusBuffon\\estoque-service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config"

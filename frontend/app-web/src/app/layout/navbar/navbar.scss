@@ -1,0 +1,29 @@
+mat-toolbar {
+  background-color: #0d1b2a; /* azul marinho elegante */
+  color: #ffffff;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+
+    &:hover {
+      color: #90caf9; 
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; 
+  font-weight: 500;
+}
+}

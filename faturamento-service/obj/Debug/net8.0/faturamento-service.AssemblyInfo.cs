@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("faturamento-service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9acc3b75206dbe3fc4e8af9573dd0ebb208d6b8")]
 [assembly: System.Reflection.AssemblyProductAttribute("faturamento-service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("faturamento-service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

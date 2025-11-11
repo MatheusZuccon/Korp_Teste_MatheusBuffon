@@ -1,0 +1,24 @@
+<div class="produto-form">
+  <h2>Novo Produto</h2>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Código</mat-label>
+    <input matInput [(ngModel)]="produto.codigo" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descrição</mat-label>
+    <input matInput [(ngModel)]="produto.descricao" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Saldo</mat-label>
+    <input matInput type="number" [(ngModel)]="produto.saldo" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="salvarProduto()">
+    Salvar
+  </button>
+
+  <p *ngIf="mensagem" style="margin-top: 10px;">{{ mensagem }}</p>
+</div>

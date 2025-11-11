@@ -3694,11 +3694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\faturamento-service\\faturamento-service.csproj",
+      "projectUniqueName": "C:\\dev\\Korp_Teste_MatheusBuffon\\faturamento-service\\faturamento-service.csproj",
       "projectName": "faturamento-service",
-      "projectPath": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\faturamento-service\\faturamento-service.csproj",
+      "projectPath": "C:\\dev\\Korp_Teste_MatheusBuffon\\faturamento-service\\faturamento-service.csproj",
       "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-      "outputPath": "C:\\dev_estagio\\Korp_Teste_MatheusBuffon\\faturamento-service\\obj\\",
+      "outputPath": "C:\\dev\\Korp_Teste_MatheusBuffon\\faturamento-service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config"

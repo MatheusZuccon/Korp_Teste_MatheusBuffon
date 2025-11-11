@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="navbar">
+  <span class="logo">
+    <mat-icon>storefront</mat-icon>
+    Controle de Vendas
+  </span>
+
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/estoque" routerLinkActive="active-link">
+    <mat-icon>inventory_2</mat-icon>
+    Estoque
+  </a>
+
+  <a mat-button routerLink="/notas" routerLinkActive="active-link">
+    <mat-icon>receipt_long</mat-icon>
+    Notas
+  </a>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

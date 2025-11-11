@@ -1,0 +1,64 @@
+/* ====== CONTAINER PRINCIPAL ====== */
+.produto-form {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 640px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ====== TÍTULO ====== */
+.produto-form h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  font-size: 1.6rem;
+
+  mat-icon {
+    color: #1565c0;
+    font-size: 26px;
+  }
+}
+
+/* ====== CAMPOS ====== */
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.mat-mdc-form-field {
+  --mdc-filled-text-field-container-color: #fafafa;
+  --mdc-filled-text-field-focus-active-indicator-color: #1976d2;
+  --mdc-filled-text-field-focus-label-text-color: #1976d2;
+  --mdc-filled-text-field-hover-active-indicator-color: #1976d2;
+  border-radius: 8px;
+}
+
+/* ====== BOTÃO ====== */
+button[mat-raised-button] {
+  align-self: flex-end;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #fff !important;
+  background-color: #1976d2 !important;
+  padding: 0.6rem 1.5rem;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+
+  &:hover {
+    background-color: #1565c0 !important;
+    transform: translateY(-1px);
+  }
+}
+
+/* ====== MENSAGEM ====== */
+p {
+  margin-top: 0.5rem;
+  color: #444;
+  font-size: 0.95rem;
+}

@@ -36,7 +36,7 @@ public class NotasController : ControllerBase
         _context.NotasFiscais.Add(nota);
         _context.SaveChanges();
 
-        return Created($"/notas/{nota.Id}", nota);
+        return CreatedAtAction(nameof(GetNotas), new { id = nota.Id }, nota);
     }
 
     [HttpPost("{id}/itens")]
@@ -57,30 +57,47 @@ public class NotasController : ControllerBase
     }
 
     [HttpPost("{id}/imprimir")]
-    public async Task<IActionResult> Imprimir(int id)
+public async Task<IActionResult> Imprimir(int id)
+{
+    try
     {
-        var nota = _context.NotasFiscais.Include(n => n.Itens).FirstOrDefault(n => n.Id == id);
-        if (nota == null) return NotFound("Nota não encontrada.");
-        if (nota.Status == StatusNota.Fechada) return BadRequest("Nota já está fechada.");
+        var nota = _context.NotasFiscais
+            .Include(n => n.Itens)
+            .FirstOrDefault(n => n.Id == id);
+
+        if (nota == null)
+            return NotFound("Nota não encontrada.");
+        if (nota.Status == StatusNota.Fechada)
+            return BadRequest("Nota já está fechada.");
 
         foreach (var item in nota.Itens)
         {
-            try
-            {
-                var result = await _httpClient.PutAsJsonAsync(_estoqueServiceUrl, new
-                {
-                    Codigo = item.CodigoProduto,
-                    Saldo = await ObterNovoSaldo(item.CodigoProduto, item.Quantidade)
-                });
+            var produto = await _httpClient.GetFromJsonAsync<ProdutoDto>(
+                $"http://localhost:5201/produtos/{item.CodigoProduto}"
+            );
 
-                if (!result.IsSuccessStatusCode)
-                    return BadRequest("Erro ao atualizar estoque.");
+            if (produto == null)
+                return BadRequest($"Produto {item.CodigoProduto} não existe no estoque.");
 
-            }
-            catch
-            {
-                return StatusCode(503, "Serviço de estoque indisponível.");
-            }
+            if (produto.Saldo < item.Quantidade)
+                return Conflict($"Saldo insuficiente para o produto {item.CodigoProduto}. Outro processo pode ter alterado o saldo.");
+
+            var novoSaldo = produto.Saldo - item.Quantidade;
+
+            var response = await _httpClient.PutAsJsonAsync(
+                "http://localhost:5201/produtos/saldo",
+                new { Codigo = item.CodigoProduto, Saldo = novoSaldo }
+            );
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode(503, "Serviço de estoque indisponível ou conflito de atualização.");
+
+            var produtoAtualizado = await _httpClient.GetFromJsonAsync<ProdutoDto>(
+                $"http://localhost:5201/produtos/{item.CodigoProduto}"
+            );
+
+            if (produtoAtualizado == null || produtoAtualizado.Saldo < 0)
+                return Conflict($"Conflito detectado: o produto {item.CodigoProduto} foi alterado simultaneamente.");
         }
 
         nota.Status = StatusNota.Fechada;
@@ -88,6 +105,25 @@ public class NotasController : ControllerBase
 
         return Ok(nota);
     }
+    catch (HttpRequestException ex)
+    {
+        Console.WriteLine($"❌ Erro de comunicação com o serviço de estoque: {ex.Message}");
+        return StatusCode(503, "Serviço de estoque indisponível.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ Erro inesperado ao imprimir nota: {ex.Message}");
+        return StatusCode(500, "Erro interno ao processar a nota fiscal.");
+    }
+}
+
+
+public class ProdutoDto
+{
+    public string Codigo { get; set; }
+    public int Saldo { get; set; }
+}
+
 
     private async Task<int> ObterNovoSaldo(string codigo, int quantidade)
     {
@@ -98,8 +134,4 @@ public class NotasController : ControllerBase
     }
 }
 
-public class ProdutoDto
-{
-    public string Codigo { get; set; }
-    public int Saldo { get; set; }
-}
+

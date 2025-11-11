@@ -53,4 +53,15 @@ public class ProdutosController : ControllerBase
 
         return Ok(produto);
     }
+
+    [HttpGet("{codigo}")]
+    public IActionResult ObterPorCodigo(string codigo)
+    {
+        var produto = _context.Produtos.FirstOrDefault(p => p.Codigo == codigo);
+
+        if (produto == null)
+        return NotFound("Produto não encontrado.");
+
+    return Ok(produto);
+    }
 }

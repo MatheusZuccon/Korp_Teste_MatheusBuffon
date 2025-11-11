@@ -1,31 +1,42 @@
-using estoque_service.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using estoque_service.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurando o banco SQLite
+// Registrar o DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=estoque.db"));
 
-// Habilita Controllers
-builder.Services.AddControllers();
+// Ativar CORS para o Angular
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 
-// Swagger
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Ativa Swagger no modo dev
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+// Habilitar CORS
+app.UseCors("AllowAngular");
 
-// Mapeia Controllers (importante!)
+app.UseHttpsRedirection();
 app.MapControllers();
-
 app.Run();

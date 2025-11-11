@@ -1,0 +1,141 @@
+/* ====== CONTAINER PRINCIPAL ====== */
+.notas-container {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 960px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ====== CABEÇALHO ====== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    font-size: 1.5rem;
+
+    mat-icon {
+      color: #1565c0;
+      font-size: 26px;
+    }
+  }
+
+  button[mat-raised-button] {
+    border-radius: 8px;
+    font-weight: 500;
+    color: #fff !important;
+    background-color: #1976d2 !important;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+
+    mat-icon {
+      margin-right: 6px;
+    }
+
+    &:hover {
+      background-color: #1565c0 !important;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+/* ====== TABELA ====== */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.notas-table {
+  width: 100%;
+  border-radius: 12px;
+  background: #fafafa;
+  border-collapse: collapse;
+  overflow: hidden;
+
+  th {
+    font-weight: 600;
+    color: #444;
+    background-color: #f1f4fa;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  td,
+  th {
+    padding: 1rem 1.2rem;
+    vertical-align: middle;
+  }
+
+  tr.mat-row,
+  tr.mat-header-row {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .clickable-row {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #eef4ff;
+      cursor: pointer;
+    }
+  }
+}
+
+/* ====== COLUNA STATUS ====== */
+.mat-column-status,
+.status-cell {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.status-cell span {
+  display: inline-block;
+  min-width: 64px;
+  text-align: center;
+}
+
+/* ====== BADGES ====== */
+.badge-aberta,
+.badge-fechada {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35em 0.8em;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  min-width: 64px;
+}
+
+.badge-aberta {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-fechada {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* ====== LOADING ====== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #666;
+
+  mat-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #1976d2;
+  }
+}
